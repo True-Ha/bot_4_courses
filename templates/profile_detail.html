@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="text-center">
+    <h4 class="mt-2">Telegram name: {{ user.tele_name }}</h4>
+    <h4 class="mt-2">Telegram username: {{ user.tele_username }}</h4>
+    <h4 class="mt-2">Telegram user_id: {{ user.tele_user_id }}</h4>
+    <a href="https://t.me/{{ user.tele_username }}" class="btn btn-primary mt-2">Telegram account</a>
+    </div>
+{% endblock content %}
