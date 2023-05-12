@@ -7,6 +7,7 @@ class MyUser(AbstractUser):
     tele_username = models.CharField(max_length=250)
     tele_user_id = models.CharField(max_length=250)
     email = models.EmailField(null=True, blank=True)
+    payment = models.ForeignKey("Payment", on_delete=models.PROTECT, null=True)
 
     def __str__(self):
         return str(self.tele_name)
@@ -20,4 +21,4 @@ class Payment(models.Model):
     payment_info = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.payment_info)
