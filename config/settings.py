@@ -1,5 +1,5 @@
 import os
-# import django_heroku
+from app.bot.dataconfig import EMAIL_USER, EMAIL_PASSWORD
 
 from pathlib import Path
 
@@ -117,5 +117,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'harm1523@gmail.com'
-EMAIL_HOST_PASSWORD = 'ubuzwpwfnwtdwghy'
+EMAIL_HOST_USER = EMAIL_USER
+EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
