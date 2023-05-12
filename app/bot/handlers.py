@@ -4,7 +4,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types.message import ContentType
 
-from app.services import create_user
+from app.services import create_user, create_payment_info
 from .create_bot import bot, PAYMENTS_TOKEN, dp
 
 
@@ -64,14 +64,14 @@ async def check_password(message: Message, state: FSMContext):
 async def start(message: Message):
     await message.answer('Команды: \n/buy_course\n/reg')
 
-
+# @dp.message_handler(commands=['buy'])
 async def buy_course(message: Message):
     if PAYMENTS_TOKEN.split(':')[1] == 'TEST':
         await bot.send_message(message.chat.id, "Test payment!!!")
 
     await bot.send_invoice(message.chat.id,
-                           title="Buy cours",
-                           description="Body trainig cours",
+                           title="Buy course",
+                           description="Body training course",
                            provider_token=PAYMENTS_TOKEN,
                            currency="rub",
                            photo_url="https://i.pinimg.com/600x315/0f/e0/05/0fe005679f54e54358f480c0ffe7aa34.jpg",
@@ -86,21 +86,23 @@ async def buy_course(message: Message):
 
 
 #pre checkout (must be answered in 10 seconds)
-# @dp.pre_checkout_query_handler(lambda query: True)
+@dp.pre_checkout_query_handler(lambda query: True)
 async def pre_checkout_query(pre_checkout_q: types.PreCheckoutQuery):
     await bot.answer_pre_checkout_query(pre_checkout_q.id, ok=True)
 
 #successful payment
-# @dp.message_handler(content_types=ContentType.SUCCESSFUL_PAYMENT)
+@dp.message_handler(content_types=ContentType.SUCCESSFUL_PAYMENT)
 async def success_payment(message: Message):
-    print("SUCCESSFUL PAYMENT:")
+    print("SUCCESSFUL PAYMENT")
     payment_info = message.successful_payment.to_python()
-    for k, v in payment_info.items():
-        print(f"{k} = {v}")
     await bot.send_message(message.chat.id,
                            f"Платеж на сумму {message.successful_payment.total_amount // 100} {message.successful_payment.currency} прошёл успешно")
-    
+###########
+    await (create_payment_info(message.from_user.id, message.from_user.first_name, message.from_user.username, payment_info))
 
+
+
+###########
 def register_handlers(dp: Dispatcher):
     dp.register_message_handler(start_registration, commands='reg', state=None)
     dp.register_message_handler(set_username, state=RegisterFSM.username)

@@ -1,6 +1,5 @@
 import os
 import django
-# import sys
 from aiogram.utils import executor
 
 
@@ -9,7 +8,7 @@ from aiogram.utils import executor
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 django.setup()
-# sys.path.append("/Users/claimixmail.ru/Desktop/fit_bot_may/config/config")
+
 
 
 from app.bot.create_bot import dp
