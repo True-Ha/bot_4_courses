@@ -18,12 +18,21 @@ async def create_user(t_name, t_username, t_user_id, username, email, password):
             username=username,
         )
 
-
+# obj = MyUser.objects.get(tele_user_id=t_user_id)
+# if obj.tele_user_id == t_user_id:
+#   obj.Payment = info
+#   obj.save()
 
 async def create_payment_info(t_user_id, t_name, t_username, payment_info):
     info = []
     for k, v in payment_info.items():
         info.append(f"{k} = {v}")
+    obj = MyUser.objects.get(tele_user_id=t_user_id)
+    if obj:
+        obj.payment = ' / '.join(info) + '\n\n' + obj.payment
+        obj.save()
+    print(obj.payment)
+
     try:
         return True, Payment.objects.create(
             user_id=t_user_id,
@@ -31,24 +40,8 @@ async def create_payment_info(t_user_id, t_name, t_username, payment_info):
             username=t_username,
             payment_info=info
         )
+
     except IntegrityError:
         return False, Payment.objects.get(
             username=t_username,
         )
-
-# async def create_payment_info(t_name, t_username, t_user_id, payment_info):
-#     if payment_info and t_user_id:
-#         info = []
-#         for k, v in payment_info.items():
-#             info.append(f"{k} = {v}")
-#
-#         post = requests.post(url=url, data={
-#             "username": t_username,
-#             "name": t_name,
-#             "user_id": t_user_id,
-#             "payment_info": ' '.join(info),
-#         })
-#         return "Payment info sending in admin panel."
-#
-#     else:
-#         return "The action did not end"
