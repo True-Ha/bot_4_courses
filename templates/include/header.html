@@ -1,0 +1,46 @@
+ {% load static %}
+
+ <header class="header">
+
+        <div class="logo">
+          <a href="{% url 'home' %}">
+          <img src="{% static '/img/logo.svg' %}" alt="logo" />
+          </a>
+        </div>
+        <nav class="nav">
+          <div class="icons">
+            <a href="#">
+              <img src="{% static 'img/instagram-icon.svg' %}" alt="" />
+            </a>
+            <a href="#">
+              <img src="{% static 'img/youtube-icon.svg' %}" alt="" />
+            </a>
+            <a href="#">
+              <img src="{% static 'img/telegram-icon.svg' %}" alt="" />
+            </a>
+            <a href="#">
+              <img src="{% static 'img/tiktok-icon.svg' %}" alt="" />
+            </a>
+
+            <a href="#">
+              <img src="{% static 'img/vk-icon.svg' %}" alt="" />
+            </a>
+          </div>
+          <a href="{% url 'user-info' pk=1 %}">
+            <div class="lk">
+              <img src="{% static 'img/icons8-пользователь-64.png'%}" alt="" />
+            </div>
+          </a>
+
+        {% for train in 1st_week %}
+          <div class="weeks">
+            <div class="week">
+              <a href="{% url 'train_week' train.pk %}">
+              <button>{{ train.name }}</button>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+
+        </nav>
+ </header>
