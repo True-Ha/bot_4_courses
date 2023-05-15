@@ -35,7 +35,15 @@ class Payment(models.Model):
 
 class Training(models.Model):
     name = models.CharField(max_length=300)
-    description = models.TextField(null=True)
+    description_week = models.TextField(null=True)
+    train1 = models.TextField(null=True)
+    train2 = models.TextField(null=True)
+    train3 = models.TextField(null=True)
+    train4 = models.TextField(null=True)
+    train5 = models.TextField(null=True)
+    train6 = models.TextField(null=True)
+
+    slug = models.SlugField(max_length=130, unique=True, null=True, db_index=True, verbose_name="URL")
 
     class Day(models.TextChoices):
         Monday = "Mon"
@@ -53,9 +61,9 @@ class Training(models.Model):
 
     def __str__(self):
         return self.name
-    #
-    # def get_absolute_url(self):
-    #     return reverse("train_week", kwargs={"pk": self.pk})
+
+    def get_absolute_url(self):
+        return reverse('train_detail', kwargs={"slug": self.slug})
 
 
 

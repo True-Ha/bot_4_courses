@@ -23,8 +23,6 @@ urlpatterns = [
 
 
     path('gora<int:pk>/', views.TrainingView.as_view(), name='train_week'),
-    # path('gora2/', views.ScndWeek.as_view(), name='ScndWeek'),
-    # path('gora3/', views.ThrdWeek.as_view(), name='ThrdWeek'),
-    # path('gora4/', views.FourthWeek.as_view(), name='FourthWeek'),
+    path('gora/<slug:slug>', views.TrainingsDaysView.as_view(), name='train_detail'),
 
 ]

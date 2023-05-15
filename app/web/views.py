@@ -56,10 +56,30 @@ def get_train():
     return Training.objects.all()
 
 
-class TrainingView(ListView):
+class TrainingView(DetailView):
     model = Training
-    template_name = 'weeks/1st_week.html'
+    template_name = 'weeks/train_list.html'
     context_object_name = 'trainings'
+
+
+    def get_queryset(self):
+        return Training.objects.all().order_by('id')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['train_list'] = Training.objects.all().order_by('id')
+        context['1st_week'] = Training.objects.filter(name__contains='1st').order_by('id')
+        context['2nd_week'] = Training.objects.filter(name__contains='2nd').order_by('id')
+        context['3rd_week'] = Training.objects.filter(name__contains='3rd').order_by('id')
+        context['4th_week'] = Training.objects.filter(name__contains='4th').order_by('id')
+
+        return context
+
+
+class TrainingsDaysView(DetailView):
+    model = Training
+    template_name = 'weeks/train_detail.html'
+    context_object_name = "train"
 
     def get_queryset(self):
         return Training.objects.all().order_by('id')
@@ -70,8 +90,4 @@ class TrainingView(ListView):
         context['2nd_week'] = Training.objects.filter(name__contains='2nd').order_by('id')
         context['3rd_week'] = Training.objects.filter(name__contains='3rd').order_by('id')
         context['4th_week'] = Training.objects.filter(name__contains='4th').order_by('id')
-        # context['Mon'] =
-        # context['Wed'] =
-        # context['Fri'] =
         return context
-
