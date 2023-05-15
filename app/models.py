@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 
 class IpModel(models.Model):
@@ -34,6 +35,7 @@ class Payment(models.Model):
 
 class Training(models.Model):
     name = models.CharField(max_length=300)
+    description = models.TextField(null=True)
 
     class Day(models.TextChoices):
         Monday = "Mon"
@@ -49,7 +51,26 @@ class Training(models.Model):
     train_week = models.CharField(max_length=300, choices=Week.choices)
     train_day = models.CharField(max_length=300, choices=Day.choices)
 
-#
+    def __str__(self):
+        return self.name
+    #
+    # def get_absolute_url(self):
+    #     return reverse("train_week", kwargs={"pk": self.pk})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # class Days(models.Model):
 #     day = models.CharField(max_length=100, null=True, blank=True)
 #

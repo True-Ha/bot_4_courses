@@ -2,10 +2,10 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 
 from .forms import LoginForm
-from app.models import MyUser
+from app.models import MyUser, Training
 
 
 # class HomePage(View):
@@ -52,26 +52,26 @@ def get_client_ip(request):
     return ip
 
 
-######Training#####
-class FstWeek(TemplateView):
+def get_train():
+    return Training.objects.all()
+
+
+class TrainingView(ListView):
+    model = Training
     template_name = 'weeks/1st_week.html'
+    context_object_name = 'trainings'
 
+    def get_queryset(self):
+        return Training.objects.all().order_by('id')
 
-class ScndWeek(TemplateView):
-    template_name = 'weeks/2nd_week.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['1st_week'] = Training.objects.filter(name__contains='1st').order_by('id')
+        context['2nd_week'] = Training.objects.filter(name__contains='2nd').order_by('id')
+        context['3rd_week'] = Training.objects.filter(name__contains='3rd').order_by('id')
+        context['4th_week'] = Training.objects.filter(name__contains='4th').order_by('id')
+        # context['Mon'] =
+        # context['Wed'] =
+        # context['Fri'] =
+        return context
 
-
-class ThrdWeek(TemplateView):
-    template_name = 'weeks/3rd_week.html'
-
-
-class FourthWeek(TemplateView):
-    template_name = 'weeks/4th_week.html'
-
-# def get_context_data(self, **kwargs):
-#     context = super().get_context_data(**kwargs)
-#     context['--'] = Post.objects.filter(draft=False).order_by('-date')
-#     context['Mon'] =
-#     context['Wed'] =
-#     context['Fri'] =
-#     return context
