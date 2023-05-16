@@ -5,6 +5,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <main class="main">
+    <h3>Выбор тренировки:</h3>
   {% for train in train_list %}
     <p ><a href="{% url 'train_detail' train.slug %}">
         {{ train.name }}</a></p>

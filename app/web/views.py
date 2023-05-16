@@ -108,20 +108,7 @@ class TrainingsDaysView(DetailView):
         context = super().get_context_data(**kwargs)
         context['1st_week'] = Training.objects.filter(name__contains='1st').order_by('id')
         context['header_week'] = Training.objects.filter(name__contains='mon').order_by('id')
-        context['day_list'] = Training.objects.filter(slug=self.kwargs['slug'])
+        # context['day_list'] = Training.objects.filter(name__contains=self.kwargs[''])
         return context
 
-# class LoginView(View):
-#     def login_user(request):
-#         if request.method == "POST":
-#             username = request.POST["username"]
-#             password = request.POST["password"]
-#             user = authenticate(request, username=username, password=password)
-#             if user is not None:
-#                 login(request, user)
-#                 return redirect('home')
-#             else:
-#                 messages.success(request, ('There was an Error'))
-#                 return redirect('login')
-#         else:
-#             return render(request, 'authentication/login.html', {})
+

@@ -5,3 +5,4 @@ dataconfig
 
 .idea/
 uploaded_media/
+!/app/bot/dataconfig.py
