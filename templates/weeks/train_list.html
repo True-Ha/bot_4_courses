@@ -3,8 +3,8 @@
 
 {% block content %}
 <main class="main">
-  {% for train in train_home_list %}
-    <p><a href="{% url 'train_detail' train.slug %}">
+  {% for train in train_list %}
+    <p ><a href="{% url 'train_detail' train.slug %}">
         {{ train.name }}</a></p>
   {% endfor %}
       </main>

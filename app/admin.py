@@ -14,6 +14,7 @@ class TrainingAdminForm(forms.ModelForm):
     train4 = forms.CharField(widget=CKEditorUploadingWidget())
     train5 = forms.CharField(widget=CKEditorUploadingWidget())
     train6 = forms.CharField(widget=CKEditorUploadingWidget())
+    text_after_train = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Training

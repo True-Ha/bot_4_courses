@@ -60,8 +60,9 @@
           <div class="bar">
 
             <ul>
-              {% for days in 1st_week %}
+              {% for days in day_list %}
               <li class="monday"><a href="{% url 'train_detail' train.slug %}">{{ days.name }}</a></li>
+
               {% endfor %}
             </ul>
 
@@ -71,7 +72,7 @@
 
         </section>
         <section class="main-sect">
-          <div class="title"><b>{{train.name}}</b></div>
+          <div class="title"><b>{{train.train_day}}</b></div>
           <div class="subtitle"><b>табата 30/30</b></div>
           <div class="main">
             <iframe
@@ -150,15 +151,8 @@
                 ><button>youtube</button></a
               >
             </div>
-            <div class="card">
-              <div class="card__title">
-                <b>3 круга</b>
-              </div>
-              <span class="card__subtitle"
-                >Отдых между кругами 1 минута <br />
-                То есть, делаешь 6 упражнений за 6 минут -<br />
-                это 1 круг. А тебе три )</span>
-            </div>
+              <span class="card"
+                >{{train.text_after_train|safe}}</span>
           </div>
 </section>
 </main>

@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <main class="main">
-    <h4 class="mt-2">Telegram name: {{ user.tele_name }}</h4>
-    <h4 class="mt-2">Telegram username: {{ user.tele_username }}</h4>
-    <h4 class="mt-2">Telegram user_id: {{ user.tele_user_id }}</h4>
+<main class="main" xmlns="http://www.w3.org/1999/html">
+    <h4 class="mt-2">Username: {{ user.username }}</h4>
+    <h4 class="mt-2">Telegram: @{{ user.tele_username }}</h4>
+    <h4 class="mt-2">email: {{ user.email }}</h4>
     <a href="https://t.me/{{ user.tele_username }}" class="btn btn-primary mt-2">Telegram account</a>
     </main>
+
+    <p><a href="{% url 'user-upgrade' %}">Update</a></p>
 {% endblock content %}
+
+

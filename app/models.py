@@ -42,19 +42,20 @@ class Training(models.Model):
     train4 = models.TextField(null=True)
     train5 = models.TextField(null=True)
     train6 = models.TextField(null=True)
+    text_after_train = models.TextField(null=True)
 
     slug = models.SlugField(max_length=130, unique=True, null=True, db_index=True, verbose_name="URL")
 
     class Day(models.TextChoices):
-        Monday = "Mon"
-        Wednesday = "Wed"
-        Friday = "Fri"
+        Monday = "Понедельник"
+        Wednesday = "Среда"
+        Friday = "Пятница"
 
     class Week(models.TextChoices):
-        First_week = "1st_week"
-        Second_week = "2nd_week"
-        Third_week = "3rd_week"
-        Fourth_week = "4th_week"
+        First_week = "1 неделя"
+        Second_week = "2 неделя"
+        Third_week = "3 неделя"
+        Fourth_week = "4 неделя"
 
     train_week = models.CharField(max_length=300, choices=Week.choices)
     train_day = models.CharField(max_length=300, choices=Day.choices)
