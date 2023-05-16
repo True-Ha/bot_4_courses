@@ -26,11 +26,7 @@
               <img src="{% static 'img/vk-icon.svg' %}" alt="" />
             </a>
           </div>
-          <a href="{% url 'user-info' pk=1 %}">
-            <div class="lk">
-              <img src="{% static 'img/icons8-пользователь-64.png'%}" alt="" />
-            </div>
-          </a>
+
 
         {% for train in header_week %}
           <div class="weeks">
@@ -41,6 +37,20 @@
             </div>
           </div>
           {% endfor %}
+
+
+          {% if user.is_authenticated %}
+          <p class="text-right"><a href="{% url 'logout' %}">logout</a></p>
+          <a href="{% url 'user-info' user.pk %}">
+            <div class="lk">
+              <img src="{% static 'img/icons8-пользователь-64.png'%}" alt="" />
+            </div>
+          </a>
+          {% else %}
+            <p class="text-right"><a href="{% url 'login' %}">Login</a></p>
+          {% endif %}
+
+
 
         </nav>
  </header>

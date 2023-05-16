@@ -18,10 +18,17 @@
   </head>
 <body>
  <div class="wrapper">
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+     {% endif %}
+
     {% include 'include/header.html' %}
+
     {% block content %}
     {% endblock content %}
-
+     {% include 'include/footer.html' %}
  </div>
 
 </body>

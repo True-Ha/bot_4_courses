@@ -1,3 +1,23 @@
+{% load static %}
       <footer class="footer">
-        <div class="logo"><img src="./img/logo.svg" alt="" /></div>
+        <div class="logotext">
+          <div class="logo">
+            <img src="{% static 'img/logo.svg'%}" alt="" />
+          </div>
+          <div class="text">
+            <a href="#">Политика конфиденциальности</a>
+          </div>
+        </div>
+        <div class="menu">
+          <div class="title">Меню</div>
+          <ul>
+            <li><a href=""> Главная</a></li>
+            <li><a href="#">Среда</a></li>
+            <li><a href="#">Понедельник</a></li>
+            <li><a href="#">Пятница</a></li>
+          </ul>
+        </div>
+        <a href="#">
+          <button>напиши мне</button>
+        </a>
       </footer>

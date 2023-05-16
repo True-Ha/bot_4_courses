@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
+{% if user.is_authenticated %}
 <main class="main">
   {% for train in train_list %}
     <p ><a href="{% url 'train_detail' train.slug %}">
         {{ train.name }}</a></p>
   {% endfor %}
       </main>
-
-
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
 {% endblock content %}

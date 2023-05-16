@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-
 /* Убираем внутренние отступы */
 ul[class],
 ol[class] {
@@ -79,10 +78,13 @@ select {
 }
 /*-----------------------------------------------------*/
 body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
+body {
   font-family: "Roboto", Arial, sans-serif;
   background-color: #f6f6f6;
-  margin: 50px 175px;
-  overflow-x: hidden;
 }
 a {
   text-decoration: none;
@@ -92,9 +94,15 @@ li {
   margin: 0;
   padding: 0;
 }
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .header {
   display: flex;
   gap: 52px;
+  margin: 50px 0 0 175px;
 }
 .header img {
   width: 25px;
@@ -118,7 +126,6 @@ li {
 }
 .weeks {
   display: flex;
-  flex-direction: row;
   gap: 15px;
 }
 .week button {
@@ -140,6 +147,12 @@ li {
 }
 .main {
   font-family: "Roboto", Arial, sans-serif;
+  flex: 1 1 auto;
+  margin: 50px 175px;
+}
+.main-sect .main {
+  margin: 0;
+  padding: 0;
 }
 .main-page .title {
   font-weight: 800;
@@ -262,7 +275,7 @@ li {
   text-shadow: 0 0 2px white;
   border-radius: 4px;
   position: absolute;
-  top: 111%;
+  top: 116%;
   font-size: 24px;
 }
 .lk {
@@ -294,28 +307,32 @@ li {
 
 .bar ul {
   display: flex;
-   align-items: center;
-   justify-content: center;
+  justify-content: center;
 }
-
-
 .bar ul li {
   border: 1px solid #ebebeb;
   padding: 10px 120px;
   cursor: pointer;
   font-size: 14px;
   list-style-type: none;
-  align-items: center;
-
 
 }
-
-
 
 .monday {
   color: white;
   background-color: #3d3d3d;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.alldays {
+  color: white;
+  background-color: #3d3d3d;
   border-radius: 10px;
+}
+
+.alldays a {
+    color: white;
 }
 .friday {
   border-top-right-radius: 10px;
@@ -396,12 +413,100 @@ li {
   background-color: red;
 }
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   background-color: #2e2e2e;
-  position: absolute;
-  min-width: 1000%;
-  min-height: 270px;
-  left: -50%;
+  padding: 70px 0;
 }
-.footer .logo {
-  position: absolute;
+.footer .text a {
+  color: #6d6d6d;
+}
+.footer li {
+  list-style-type: none;
+}
+.footer .logo img {
+  width: 50px;
+  height: 50px;
+}
+.footer .menu li a {
+  font-size: 12px;
+  color: #b7b7b7;
+}
+.footer .menu ul {
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 150px);
+}
+.footer .menu .title {
+  margin-bottom: 4px;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+}
+.footer a button {
+  background-color: #f9dc75;
+  border: none;
+  border-radius: 4px;
+  color: #4a3306;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 12px 50px;
+}
+.footer .logotext {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+  .main {
+    margin: 0 0 0 30px;
+    padding: 0;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0;
+    padding: 0;
+  }
+  .card {
+    margin-bottom: 36px;
+    font-size: 18px;
+  }
+  .card .video iframe {
+    width: 315px;
+    height: 200px;
+  }
+  .card a button {
+    font-size: 10px;
+  }
+  .video-subscr .list {
+    max-width: 100%;
+  }
+  .video-subscr > div {
+    font-size: 18px;
+  }
+  .main-sect .title {
+    font-size: 48px;
+  }
+  .main-sect .subtitle {
+    font-size: 36px;
+    margin-bottom: 48px;
+    background-color: red;
+    max-width: 260px;
+  }
+  .main-sect .main iframe {
+    width: 315px;
+    height: 200px;
+  }
 }

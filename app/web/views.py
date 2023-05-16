@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.http import HttpResponse
@@ -23,25 +23,25 @@ class HomePage(ListView):
         return context
 
 
-class LoginView(View):
-    def get(self, request, *args, **kwargs):
-        context = {'form': LoginForm}
-        return render(request, 'accounts/login.html', context)
-
-    def post(self, request, *args, **kwargs):
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(username=cd['username'], password=cd['password'])
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('user-info')
-                else:
-                    return HttpResponse('Disabled account')
-            else:
-                return HttpResponse('Invalid login')
-
+# class LoginView(View):
+#     def get(self, request, *args, **kwargs):
+#         form = LoginForm
+#         return render(request, 'authentication/login.html', {'form': form})
+#
+#     def post(self, request, *args, **kwargs):
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             cd = form.cleaned_data
+#             user = authenticate(username=cd['username'], password=cd['password'])
+#             if user is not None:
+#                 if user.is_active:
+#                     login(request, user)
+#                     return redirect('user-info')
+#                 else:
+#                     return HttpResponse('Disabled account')
+#             else:
+#                 return messages.error(request, 'ERROR')
+#
 
 class UserView(DetailView):
     model = MyUser
@@ -54,7 +54,6 @@ class UserView(DetailView):
 
 
 def update_user(request):
-    model = MyUser
     if request.user.is_authenticated:
         current_user = MyUser.objects.get(id=request.user.id)
         form = UserUpdateForm(request.POST or None, instance=current_user)
@@ -109,5 +108,20 @@ class TrainingsDaysView(DetailView):
         context = super().get_context_data(**kwargs)
         context['1st_week'] = Training.objects.filter(name__contains='1st').order_by('id')
         context['header_week'] = Training.objects.filter(name__contains='mon').order_by('id')
-        # context['day_list'] = Training.objects.filter(train_week=self.kwargs['train_week'])
+        context['day_list'] = Training.objects.filter(slug=self.kwargs['slug'])
         return context
+
+# class LoginView(View):
+#     def login_user(request):
+#         if request.method == "POST":
+#             username = request.POST["username"]
+#             password = request.POST["password"]
+#             user = authenticate(request, username=username, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 return redirect('home')
+#             else:
+#                 messages.success(request, ('There was an Error'))
+#                 return redirect('login')
+#         else:
+#             return render(request, 'authentication/login.html', {})

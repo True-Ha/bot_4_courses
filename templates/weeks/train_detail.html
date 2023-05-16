@@ -60,16 +60,12 @@
           <div class="bar">
 
             <ul>
-              {% for days in day_list %}
-              <li class="monday"><a href="{% url 'train_detail' train.slug %}">{{ days.name }}</a></li>
-
+              {% for days in 1st_week%}
+                <li class="alldays"><a href="{% url 'train_detail' train.slug %}">{{ days.name }}</a></li>
               {% endfor %}
             </ul>
 
-
-
           </div>
-
         </section>
         <section class="main-sect">
           <div class="title"><b>{{train.train_day}}</b></div>
