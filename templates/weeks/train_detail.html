@@ -61,7 +61,7 @@
 
             <ul>
               {% for days in 1st_week %}
-              <li class="monday"><a href="{% url 'train_week' train.pk %}">{{ days.name }}</a></li>
+              <li class="monday"><a href="{% url 'train_detail' train.slug %}">{{ days.name }}</a></li>
               {% endfor %}
             </ul>
 
@@ -83,46 +83,16 @@
               allowfullscreen
             ></iframe>
             <div class="video-subscr">
-              <div class="text">
-                1️⃣ ПЕРВАЯ НЕДЕЛЯ: <br />
-                <br />
-                Понедельник Табата 30/30 <br />
-                30 секунд делаем, 30 секунд <br /><br />
-                отдыхаем 3 круга, отдых между кругами 1 минута
-              </div>
-              <div class="title-subscr">
-                <br />
-                <b>Суставная разминка. </b>
-              </div>
-              <div class="list">
-                <ol type="1">
-                  <li>Планка с касанием плеч</li>
-                  <li>Динамическая планка</li>
-                  <li>Касание плеч в жуке</li>
-                  <li>Повороты в прыжке</li>
-                  <li>Подъёмы коленей стоя</li>
-                  <li>Берпи</li>
-                </ol>
-              </div>
+              {{ train.description_week|safe }}
             </div>
           </div>
+          </br></br>
           <div class="cards">
             <div class="card">
-              <div class="video">
-                <iframe
-                  width="660"
-                  height="415"
-                  src="https://www.youtube.com/embed/MKTSmEO2yUU"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="card__title">{{train.train1}}</div>
+
+
               <div class="card__subtitle">
-                Табата 30/30 <br />
-                30 секунд делаем, 30 секунд отдыхаем
+                {{train.train1|safe}}
               </div>
               <a
                 href="https://www.youtube.com/watch?v=-gDinVAmtA0&ab_channel=WondersOfClassicalMusic"
@@ -130,21 +100,8 @@
               >
             </div>
             <div class="card">
-              <div class="video">
-                <iframe
-                  width="660"
-                  height="415"
-                  src="https://www.youtube.com/embed/MKTSmEO2yUU"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="card__title">{{train.train2}}</div>
               <div class="card__subtitle">
-                Табата 30/30 <br />
-                30 секунд делаем, 30 секунд отдыхаем
+                {{train.train2|safe}}
               </div>
               <a
                 href="https://www.youtube.com/watch?v=-gDinVAmtA0&ab_channel=WondersOfClassicalMusic"
@@ -152,21 +109,9 @@
               >
             </div>
             <div class="card">
-              <div class="video">
-                <iframe
-                  width="660"
-                  height="415"
-                  src="https://www.youtube.com/embed/MKTSmEO2yUU"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="card__title">{{train.train3}}</div>
+
               <div class="card__subtitle">
-                Табата 30/30 <br />
-                30 секунд делаем, 30 секунд отдыхаем
+                {{train.train3|safe}}
               </div>
               <a
                 href="https://www.youtube.com/watch?v=-gDinVAmtA0&ab_channel=WondersOfClassicalMusic"
@@ -174,21 +119,9 @@
               >
             </div>
             <div class="card">
-              <div class="video">
-                <iframe
-                  width="660"
-                  height="415"
-                  src="https://www.youtube.com/embed/MKTSmEO2yUU"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="card__title">{{train.train4}}</div>
+
               <div class="card__subtitle">
-                Табата 30/30 <br />
-                30 секунд делаем, 30 секунд отдыхаем
+                {{train.train4|safe}}
               </div>
               <a
                 href="https://www.youtube.com/watch?v=-gDinVAmtA0&ab_channel=WondersOfClassicalMusic"
@@ -196,21 +129,10 @@
               >
             </div>
             <div class="card">
-              <div class="video">
-                <iframe
-                  width="660"
-                  height="415"
-                  src="https://www.youtube.com/embed/MKTSmEO2yUU"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="card__title">{{train.train5}}</div>
+
+
               <div class="card__subtitle">
-                Табата 30/30 <br />
-                30 секунд делаем, 30 секунд отдыхаем
+                {{train.train5|safe}}
               </div>
               <a
                 href="https://www.youtube.com/watch?v=-gDinVAmtA0&ab_channel=WondersOfClassicalMusic"
@@ -218,21 +140,10 @@
               >
             </div>
             <div class="card">
-              <div class="video">
-                <iframe
-                  width="660"
-                  height="415"
-                  src="https://www.youtube.com/embed/MKTSmEO2yUU"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
-              </div>
-              <div class="card__title">{{train.train6}}</div>
+
+
               <div class="card__subtitle">
-                Табата 30/30 <br />
-                30 секунд делаем, 30 секунд отдыхаем
+                {{train.train6|safe}}
               </div>
               <a
                 href="https://www.youtube.com/watch?v=-gDinVAmtA0&ab_channel=WondersOfClassicalMusic"

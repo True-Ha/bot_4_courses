@@ -32,11 +32,11 @@
             </div>
           </a>
 
-        {% for train in 1st_week %}
+        {% for train in header_week %}
           <div class="weeks">
             <div class="week">
-              <a href="{% url 'train_week' train.pk %}">
-              <button>{{ train.name }}</button>
+              <a href="{% url 'train_detail' train.slug %}">
+              <button>{{ train.train_week }}</button>
               </a>
             </div>
           </div>
