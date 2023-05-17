@@ -14,6 +14,7 @@ class RegisterFSM(StatesGroup):
     password = State()
     r_password = State()
 
+
 PRICE = types.LabeledPrice(label="Подписка на 1 месяц", amount=5000*100) #в копеейках
 password = None
 
@@ -21,11 +22,13 @@ async def start_registration(message: Message):
     await RegisterFSM.username.set()
     await message.reply('Укажите свой username')
 
+
 async def set_username(message: Message, state: FSMContext):
     async with state.proxy() as data:
         data['username'] = message.text
     await RegisterFSM.next()
     await message.reply('Укажите свою почту')
+
 
 async def set_email(message: Message, state: FSMContext):
     async with state.proxy() as data:
@@ -64,7 +67,7 @@ async def check_password(message: Message, state: FSMContext):
 async def start(message: Message):
     await message.answer('Команды: \n/buy_course\n/reg')
 
-# @dp.message_handler(commands=['buy'])
+
 async def buy_course(message: Message):
     if PAYMENTS_TOKEN.split(':')[1] == 'TEST':
         await bot.send_message(message.chat.id, "Test payment!!!")

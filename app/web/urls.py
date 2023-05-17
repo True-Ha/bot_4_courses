@@ -7,8 +7,9 @@ from . import views
 
 urlpatterns = [
     path('', views.HomePage.as_view(), name='home'),
-    # path('user/', views.LoginView.as_view(template_name='authentication/login.html'), name='login'),
-    # path('login_user', views.login_user, name='login'),
+    path('gora/<slug:slug>', views.TrainingsDaysView.as_view(), name='train_detail'),
+
+
     path('logout/', LogoutView.as_view(), name='logout'),
 
     path('user/<int:pk>', views.UserView.as_view(), name='user-info'),
@@ -16,6 +17,7 @@ urlpatterns = [
     path('user/update/password/', views.change_password, name='change_password'),
 
     path("user_login", auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+
     path('reset_password/',
           auth_views.PasswordResetView.as_view(template_name="accounts/password_reset.html"), name='reset_password'),
     path('reset_password_sent/',
@@ -25,6 +27,6 @@ urlpatterns = [
     path('reset_password_complete/',
           auth_views.PasswordResetCompleteView.as_view(template_name="accounts/password_reset_sent.html"), name="password_reset_complete"),
 
-    path('gora/<slug:slug>', views.TrainingsDaysView.as_view(), name='train_detail'),
+
 
 ]

@@ -23,33 +23,12 @@ class HomePage(ListView):
         return context
 
 
-# class LoginView(View):
-#     def get(self, request, *args, **kwargs):
-#         form = LoginForm
-#         return render(request, 'authentication/login.html', {'form': form})
-#
-#     def post(self, request, *args, **kwargs):
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             cd = form.cleaned_data
-#             user = authenticate(username=cd['username'], password=cd['password'])
-#             if user is not None:
-#                 if user.is_active:
-#                     login(request, user)
-#                     return redirect('user-info')
-#                 else:
-#                     return HttpResponse('Disabled account')
-#             else:
-#                 return messages.error(request, 'ERROR')
-#
-
 class UserView(DetailView):
     model = MyUser
     template_name = 'accounts/profile_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = f'Страница пользователя: {self.object.tele_username}'
         return context
 
 
@@ -65,7 +44,7 @@ def update_user(request):
         return render(request, 'accounts/user-upgrade.html', {'form': form})
     else:
         messages.success(request, ("You must be logged"))
-        return redirect('')
+        return redirect('home')
 
 
 def change_password(request):
@@ -104,11 +83,13 @@ class TrainingsDaysView(DetailView):
     template_name = 'weeks/train_detail.html'
     context_object_name = "train"
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['1st_week'] = Training.objects.filter(name__contains='1st').order_by('id')
+        days_week = self.kwargs['slug']
+        days_week = days_week[0]
         context['header_week'] = Training.objects.filter(name__contains='mon').order_by('id')
-        # context['day_list'] = Training.objects.filter(name__contains=self.kwargs[''])
+        context['day_list'] = Training.objects.filter(name__contains=days_week)
         return context
 
 

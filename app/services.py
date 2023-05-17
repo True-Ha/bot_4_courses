@@ -18,10 +18,6 @@ async def create_user(t_name, t_username, t_user_id, username, email, password):
             username=username,
         )
 
-# obj = MyUser.objects.get(tele_user_id=t_user_id)
-# if obj.tele_user_id == t_user_id:
-#   obj.Payment = info
-#   obj.save()
 
 async def create_payment_info(t_user_id, t_name, t_username, payment_info):
     info = []
@@ -31,7 +27,7 @@ async def create_payment_info(t_user_id, t_name, t_username, payment_info):
     if obj:
         obj.payment = ' / '.join(info) + '\n\n' + obj.payment
         obj.save()
-    print(obj.payment)
+    # print(obj.payment)
 
     try:
         return True, Payment.objects.create(
