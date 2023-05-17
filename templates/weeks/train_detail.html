@@ -61,7 +61,7 @@
 
             <ul>
               {% for days in day_list %}
-                <li class="alldays"><a href="{% url 'train_detail' train.slug %}">{{ days.train_day }}</a></li>
+                <li class="alldays"><a href="{% url 'train_detail' days.slug %}">{{ days.train_day }}</a></li>
               {% endfor %}
             </ul>
 
