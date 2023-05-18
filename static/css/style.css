@@ -126,7 +126,7 @@ li {
 }
 .weeks {
   display: flex;
-  gap: 15px;
+  gap: 1em;
 }
 .week button {
   cursor: pointer;
@@ -138,9 +138,8 @@ li {
   background-color: rgb(70, 69, 69);
   padding: 0 32px;
   border-radius: 8px;
-  font-size: 22px;
+  font-size: 15px;
 }
-
 .week button:hover {
   transition-duration: 0.5s;
   background-color: red;
@@ -275,7 +274,6 @@ li {
   text-shadow: 0 0 2px white;
   border-radius: 4px;
   position: absolute;
-  top: 116%;
   font-size: 24px;
 }
 .lk {
@@ -293,7 +291,7 @@ li {
 .choice .menus {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  column-gap: 20px;
   font-size: 18px;
   padding-bottom: 64px;
 }
@@ -304,7 +302,6 @@ li {
   cursor: pointer;
   font-weight: 800;
 }
-
 .bar ul {
   display: flex;
   justify-content: center;
@@ -315,14 +312,6 @@ li {
   cursor: pointer;
   font-size: 14px;
   list-style-type: none;
-
-}
-
-.monday {
-  color: white;
-  background-color: #3d3d3d;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
 }
 
 .alldays {
@@ -333,6 +322,12 @@ li {
 
 .alldays a {
     color: white;
+}
+.monday {
+  color: white;
+  background-color: #3d3d3d;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .friday {
   border-top-right-radius: 10px;
@@ -467,10 +462,12 @@ li {
 }
 @media screen and (min-width: 300px) and (max-width: 600px) {
   body {
+    padding: 0;
+    margin: 0;
     overflow-x: hidden;
   }
   .main {
-    margin: 0 0 0 30px;
+    margin: 0 1.875em 0 1.875em;
     padding: 0;
   }
   .cards {
@@ -480,33 +477,168 @@ li {
     padding: 0;
   }
   .card {
-    margin-bottom: 36px;
-    font-size: 18px;
+    margin-bottom: 2.25em;
+    font-size: 1.125em;
   }
   .card .video iframe {
-    width: 315px;
-    height: 200px;
+    width: 18em;
+    height: 12.5em;
   }
   .card a button {
-    font-size: 10px;
+    font-size: 0.625em;
   }
   .video-subscr .list {
     max-width: 100%;
   }
   .video-subscr > div {
-    font-size: 18px;
+    font-size: 0.75em;
   }
   .main-sect .title {
-    font-size: 48px;
+    font-size: 2.75em;
   }
   .main-sect .subtitle {
-    font-size: 36px;
+    font-size: 2em;
     margin-bottom: 48px;
     background-color: red;
-    max-width: 260px;
+    max-width: 7.35em;
   }
   .main-sect .main iframe {
-    width: 315px;
-    height: 200px;
+    width: 20.5em;
+    height: 12.5em;
+  }
+  .week {
+    padding: 0;
+  }
+  .week button {
+    padding: 0 0.5em;
+    font-size: 16px;
+
+  }
+  .weeks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 0.75em;
+    justify-content: center;
+    align-items: center;
+  }
+  .header {
+    padding: 0;
+    margin: 0;
+  }
+  .nav .icons {
+    gap: 1em;
+  }
+  @keyframes gigachad-mobile {
+    from {
+      left: 100%;
+    }
+    to {
+      left: 10%;
+    }
+  }
+  .nav .icons img {
+    display: flex;
+    justify-content: center;
+    min-width: 1em;
+    max-width: 2em;
+  }
+  .nav {
+    margin-top: 1.5em;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .lk img {
+    left: 0;
+    right: 1em;
+    position: absolute;
+    min-width: 2em;
+  }
+  .logo {
+    margin-top: 1.5em;
+    margin-left: 0.75em;
+    min-width: 48px;
+  }
+  .nav button {
+    margin-top: 0.75em;
+    font-size: 1em;
+  }
+  .chains,
+  .text-program,
+  .text-trains {
+    display: none;
+  }
+  .gigachad {
+    margin-top: 10px;
+    position: initial;
+    animation: gigachad-mobile 2s;
+    max-width: 20em;
+    display: block;
+    margin: 1em auto;
+  }
+  .main-page .title {
+    text-align: center;
+  }
+  .main-page .subtitle {
+    max-width: none;
+  }
+  .choice .menus {
+    display: grid;
+    row-gap: 1em;
+    padding: 1em 0;
+    grid-template-rows: repeat(2, 1fr);
+    font-size: 14px;
+  }
+  .bar ul {
+    margin: 0;
+    padding: 0;
+  }
+  .bar ul li {
+    justify-content: flex-end;
+    padding: 10px;
+  }
+  .choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 0;
+    margin-top: 2em;
+    text-align: center;
+  }
+  .dumbbell {
+    display: none;
+  }
+  .box {
+    position: relative;
+  }
+  .box .subtitle {
+    font-size: 0.75em;
+  }
+  .box .title {
+    font-size: 1em;
+    color: black;
+  }
+  .box .about {
+    text-align: center;
+    right: 4.25em;
+    padding: 0.75em;
+    font-size: 0.75em;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 0;
+  }
+  .footer .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .footer .text {
+    display: none;
   }
 }

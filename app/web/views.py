@@ -2,13 +2,15 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
-from django.http import HttpResponse
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views import View
+
+
 from django.views.generic import DetailView, ListView, UpdateView
 
-from .forms import LoginForm, UserUpdateForm
+from .permissions import PaymentPermissionsMixin
+from .forms import  UserUpdateForm
 from app.models import MyUser, Training
 
 
@@ -74,15 +76,10 @@ def get_client_ip(request):
     return ip
 
 
-def get_train():
-    return Training.objects.all()
-
-
-class TrainingsDaysView(DetailView):
+class TrainingsDaysView(PaymentPermissionsMixin, DetailView):
     model = Training
     template_name = 'weeks/train_detail.html'
     context_object_name = "train"
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

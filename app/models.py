@@ -16,6 +16,8 @@ class MyUser(AbstractUser):
     tele_user_id = models.CharField(max_length=250)
     email = models.EmailField(null=True, blank=True)
     payment = models.TextField(null=True, blank=True)
+    has_payment = models.BooleanField(default=False)
+
     # ip = models.CharField(max_length=100)
 
     def __str__(self):
@@ -44,7 +46,9 @@ class Training(models.Model):
     train6 = models.TextField(null=True)
     text_after_train = models.TextField(null=True)
 
+
     slug = models.SlugField(max_length=130, unique=True, null=True, db_index=True, verbose_name="URL")
+
 
     class Day(models.TextChoices):
         Monday = "Понедельник"

@@ -26,6 +26,7 @@ async def create_payment_info(t_user_id, t_name, t_username, payment_info):
     obj = MyUser.objects.get(tele_user_id=t_user_id)
     if obj:
         obj.payment = ' / '.join(info) + '\n\n' + obj.payment
+        obj.has_payment = True
         obj.save()
     # print(obj.payment)
 
