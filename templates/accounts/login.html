@@ -2,18 +2,25 @@
 
 {% block content %}
 
-<div class="text-right">
-    <form action="" method=post>
+<div class="grid">
+    <form action="" method=post class="form login">
         {% csrf_token %}
-      <div class="mb-3">
-        <label class="form-label">Username</label>
-        <input type="name" class="form-control" id="Username">
+      <div class="form__field">
+        <label for="login__username"><span class="hidden">Username</span></label>
+        <input autocomplete="username" id="login__username"
+               type="text" name="username" class="form__input" placeholder="Username" required>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="name" class="form-control" id="password">
+
+      <div class="form__field">
+        <label for="login__password">
+
+          <span class="hidden">Password</span></label>
+        <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
       </div>
-      <button type="submit" class="btn btn-danger">Вход</button>
+
+      <div class="form__field">
+        <input type="submit" value="Sign In">
+      </div>
     </form>
 </div>
 

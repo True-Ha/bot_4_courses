@@ -4,16 +4,18 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<main class="main">
+<div class="grid">
+    <div class="card_train">
     <h3>Выбор тренировки:</h3>
   {% for train in train_list %}
     <p ><a href="{% url 'train_detail' train.slug %}">
         {{ train.name }}</a></p>
   {% endfor %}
-      </main>
+      </div>
+    </div>
 {% else %}
-
-    <a href="{% url 'login' %}">Login</a>
+<div class="grid">
+    <h3>Вам необходимо авторизоваться</h3></div>
 {% endif %}
 
 {% endblock content %}
